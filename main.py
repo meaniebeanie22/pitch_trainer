@@ -26,7 +26,8 @@ note_dic = {
 window = sg.Window('Pitch Trainer', layout)
 
 # pick a note to start
-note = random.choice(note_dic.keys())
+note = random.choice(list(note_dic.keys()))
+playsound(note, False) # play it
 
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
@@ -36,8 +37,8 @@ while True:
     if event == 'Submit': # check answer
         if values[0] in note_dic[note]: # correct
             window['-OUTPUT-'].update('Correct!') # change text to give dopamine
-            note = random.choice(note_dic.keys()) # pick new note
-            playsound(note)
+            note = random.choice(list(note_dic.keys())) # pick new note
+            playsound(note, False)
             
         else: # nope
             window['-OUTPUT-'].update('Nope!') 
