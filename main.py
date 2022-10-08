@@ -16,17 +16,17 @@ layout = [  [sg.Text('Type the note you hear')],
             [sg.Text('Answer:'), sg.Text(key='-OUTPUT-'), sg.Text('0/0', key='-SCORE-', justification='right')] ]
 note_dic = {
     'a.mp3':['a'],
-    #'bflat.mp3':['bb','a#'],
+    'bflat.mp3':['bb','a#'],
     'b.mp3':['b','cb'],
     'c.mp3':['c','b#'],
-    #'csharp.mp3':['c#','db'],
+    'csharp.mp3':['c#','db'],
     'd.mp3':['d'],
-    #'eflat.mp3':['eb','d#'],
+    'eflat.mp3':['eb','d#'],
     'e.mp3':['e','fb'],
     'f.mp3':['f','e#'],
-    #'fsharp.mp3':['f#','gb'],
+    'fsharp.mp3':['f#','gb'],
     'g.mp3':['g'],
-    #'aflat.mp3':['g#','ab']
+    'aflat.mp3':['g#','ab']
 }
 
 # Create the Window
