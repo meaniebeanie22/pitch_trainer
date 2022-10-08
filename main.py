@@ -4,8 +4,8 @@ from playsound import playsound
 
 # All the stuff inside your window.
 layout = [  [sg.Text('Type the note you hear')],
-            [sg.Text('Note:'), sg.InputText()],
-            [sg.Button('Submit')],
+            [sg.Text('Note:'), sg.InputText(key='-IN-')],
+            [sg.Button('Play Again'), sg.Button('Submit')],
             [sg.Text('Answer:'), sg.Text(key='-OUTPUT-')] ]
 note_dic = {
     'a.mp3':['a'],
@@ -35,12 +35,16 @@ while True:
     if event == sg.WIN_CLOSED: # if user closes window
         break
     if event == 'Submit': # check answer
-        if values[0] in note_dic[note]: # correct
+        if values['-IN-'] in note_dic[note]: # correct
             window['-OUTPUT-'].update('Correct!') # change text to give dopamine
             note = random.choice(list(note_dic.keys())) # pick new note
             playsound(note, False)
             
         else: # nope
-            window['-OUTPUT-'].update('Nope!') 
+            window['-OUTPUT-'].update('Nope!')
+        window['-IN-'].update('')
+
+    if event == 'Play Again': # play sound again
+        playsound(note, False)
 
 window.close()
