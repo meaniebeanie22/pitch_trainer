@@ -9,7 +9,7 @@ layout = [  [sg.Text('Type the note you hear')],
             [sg.Text('Answer:'), sg.Text(key='-OUTPUT-')] ]
 note_dic = {
     'a.mp3':['a'],
-    'bb.mp3':['bb','a#'],
+    'bflat.mp3':['bb','a#'],
     'b.mp3':['b','cb'],
     'c.mp3':['c','b#'],
     'csharp.mp3':['c#','db'],
