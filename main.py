@@ -1,18 +1,45 @@
 import PySimpleGUI as sg
+import random
+from playsound import playsound
 
 # All the stuff inside your window.
 layout = [  [sg.Text('Type the note you hear')],
             [sg.Text('Note:'), sg.InputText()],
-            [sg.Button('Submit')] ]
-note_dic = {''}
+            [sg.Button('Submit')],
+            [sg.Text('Answer:'), sg.Text(key='-OUTPUT-')] ]
+note_dic = {
+    'a.mp3':['a'],
+    'bb.mp3':['bb','a#'],
+    'b.mp3':['b','cb'],
+    'c.mp3':['c','b#'],
+    'csharp.mp3':['c#','db'],
+    'd.mp3':['d'],
+    'eflat.mp3':['eb','d#'],
+    'e.mp3':['e','fb'],
+    'f.mp3':['f','e#'],
+    'fsharp.mp3':['f#','gb'],
+    'g.mp3':['g'],
+    'gsharp.mp3':['g#','ab']
+}
 
 # Create the Window
-window = sg.Window('Window Title', layout)
+window = sg.Window('Pitch Trainer', layout)
+
+# pick a note to start
+note = random.choice(note_dic.keys())
+
 # Event Loop to process "events" and get the "values" of the inputs
 while True:
-    event, values = window.read()
-    if event == sg.WIN_CLOSED or event == 'Cancel': # if user closes window or clicks cancel
+    event, values = window.read() #get events and values
+    if event == sg.WIN_CLOSED: # if user closes window
         break
-    print('You entered ', values[0])
+    if event == 'Submit': # check answer
+        if values[0] in note_dic[note]: # correct
+            window['-OUTPUT-'].update('Correct!') # change text to give dopamine
+            note = random.choice(note_dic.keys()) # pick new note
+            playsound(note)
+            
+        else: # nope
+            window['-OUTPUT-'].update('Nope!') 
 
 window.close()
