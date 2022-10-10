@@ -73,8 +73,6 @@ while True:
         else:
             message = 'Nope! You chose', values['-IN-'], 'It was a ' + '/'.join(file_to_note[note])
             window['-OUTPUT-'].update(message)
-            playsound(note_to_file[values['-IN-']])
-            playsound(note)
             
         tries += 1
         window['-SCORE-'].update((str(correct) + '/' + str(tries)))
